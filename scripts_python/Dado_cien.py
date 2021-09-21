@@ -1,0 +1,53 @@
+'''
+    Description: Script en Python que permita lanzar los dados de manera indefinida Y sólo 
+    finalizará cuando se genere un PAR de DADOS (1,1 - 2,2 - 3,3 - 4,4 - 5,5 - 6,6)
+'''
+import os
+from random import randint
+
+#Functions
+def dices() :
+    status = True
+    contador = 0
+    acumula = 0
+    os.system('clear')
+    total = 0
+
+    while status :     #while status ==> while status == True
+        
+        dice1 = randint(1,6)
+        dice2 = randint(1,6)
+        print("D1: ", dice1)
+        print("D2: ", dice2)
+        print("####################################################")
+
+        
+        suma = dice1 + dice2
+
+        total += suma
+
+        acumula +=1
+
+        if (dice1 == dice2) :
+            
+            contador += 1
+
+            if(contador == 2) :
+                status = False
+                print("se llego a la posicion ",acumula) #se borra si es la suma de los resultados de los dados
+                print("la suma de las posiciones ",total) #se borra si es por la cantidad de lanzamientos
+                print("::: Se ha llegado a 2 pares consecutivos, el juego ha terminado  :::")
+        else :
+
+            contador = 0
+        
+                   
+        if (suma > 100) :
+
+            status = False
+            print("::: Se llego a la meta +100 :::")
+            
+        
+
+#Main
+dices()
